@@ -6,7 +6,13 @@ const OwnerDashboardParkList = ({ parks, handleDelete }) => {
     return (
       <div>
         {parks.map((park, index) => {
-          return <OwnerDashboardParkListItem park={park} key={index} handleDelete = {handleDelete} />;
+          return (
+            <OwnerDashboardParkListItem
+              park={park}
+              key={index}
+              handleDelete={handleDelete}
+            />
+          );
         })}
       </div>
     );

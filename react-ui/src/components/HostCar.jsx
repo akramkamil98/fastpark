@@ -25,30 +25,28 @@ class HostCar extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-// send post recuest from client to BE to signin as an owner
+  // send post recuest from client to BE to signin as an owner
   login() {
+    this.toggle();
 
-    this.toggle()
-
-    const ownerObj ={
+    const ownerObj = {
       email: this.state.email,
       password: this.state.password
-    }
-    console.log('here signinownerloginownerloginownerlogin',ownerObj);
-        $.ajax({
-        url: "/ownerlogin",
-        type: "POST",
-        data: JSON.stringify(ownerObj),
-        contentType: "application/json",
-        success: function(data) {
-          window.localStorage.setItem("user", data)
-          console.log("pleasssssss", data);
-        },
-        error: function(error) {
-          console.error("errorrrrrr", error);
-        }
-      });
-
+    };
+    console.log("here signinownerloginownerloginownerlogin", ownerObj);
+    $.ajax({
+      url: "/ownerlogin",
+      type: "POST",
+      data: JSON.stringify(ownerObj),
+      contentType: "application/json",
+      success: function(data) {
+        window.localStorage.setItem("user", data);
+        console.log("pleasssssss", data);
+      },
+      error: function(error) {
+        console.error("errorrrrrr", error);
+      }
+    });
   }
 
   toggle() {
@@ -57,7 +55,7 @@ class HostCar extends React.Component {
     });
   }
 
-  handleInputChange (event) {
+  handleInputChange(event) {
     const target = event.target;
     const name = target.name;
     const value = target.value;
@@ -65,7 +63,6 @@ class HostCar extends React.Component {
       [name]: value
     });
   }
-
 
   render() {
     return (
@@ -105,7 +102,11 @@ class HostCar extends React.Component {
           </ModalBody>
           <ModalFooter>
             <HostSignUp />
-            <Button color="primary" onClick={this.toggle} href="/ownerdashboard">
+            <Button
+              color="primary"
+              onClick={this.toggle}
+              href="/ownerdashboard"
+            >
               Sign in
             </Button>{" "}
             <Button color="secondary" onClick={this.toggle}>

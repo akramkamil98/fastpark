@@ -37,13 +37,12 @@ class book extends React.Component {
     this.ratingCount = 0;
   }
 
-
   handleChangeRate = e => {
     console.log(e);
 
     this.ratingCount = e;
   };
-// send post recuest from client to BE to update park data
+  // send post recuest from client to BE to update park data
   handleCheckOutClick = () => {
     this.toggle();
     $.ajax({
@@ -116,7 +115,6 @@ class book extends React.Component {
           <Alert color="success">Your booking has been confirmed!</Alert>
         </div>
         <div className="bookingCard">
-        
           <Card>
             <CardBody>
               <CardTitle>
@@ -157,7 +155,6 @@ class book extends React.Component {
               <Button className="btn btn-success" onClick={this.toggle}>
                 {this.props.buttonLabel}Check Out
               </Button>
-
               <Modal
                 isOpen={this.state.modal}
                 toggle={this.toggle}
@@ -167,7 +164,7 @@ class book extends React.Component {
                 <ModalBody>
                   <div>
                     <p>Please rate the Owner park here</p>
-                    <br/>
+                    <br />
                     {/* <Rating  /> */}
                     <div>
                       {/* <Rating {...this.props} initialRating={this.state.value} />
@@ -190,7 +187,6 @@ class book extends React.Component {
                     color="primary"
                     onClick={this.handleCheckOutClick}
                   >
-                
                     Check Out
                   </Button>{" "}
                   <Button color="secondary" onClick={this.toggle}>

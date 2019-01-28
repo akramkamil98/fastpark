@@ -17,7 +17,7 @@ class OwnerDashboard extends React.Component {
       ownerId: "5c026ba1548c172ce9294538",
       parks: [],
       isBouncing: false,
-      isDeleted : false
+      isDeleted: false
     };
   }
   componentDidMount() {
@@ -110,24 +110,23 @@ class OwnerDashboard extends React.Component {
       }
     );
   };
-  handleDeleteClick = (parkId)=>{
+  handleDeleteClick = parkId => {
     $.ajax({
-        url: "/deletepark",
-        type: "DELETE",
-        data: JSON.stringify({
-          parkId: parkId
-
-        }),
-        contentType: "application/json",
-        success: (data)=> {
-          console.log("pleasssssss", data);
-          this.fetchParks();
-        },
-        error: function(error) {
-          console.error("errorrrrrr", error);
-        }
-      });
-  }
+      url: "/deletepark",
+      type: "DELETE",
+      data: JSON.stringify({
+        parkId: parkId
+      }),
+      contentType: "application/json",
+      success: data => {
+        console.log("pleasssssss", data);
+        this.fetchParks();
+      },
+      error: function(error) {
+        console.error("errorrrrrr", error);
+      }
+    });
+  };
   render() {
     return (
       <div>
@@ -135,7 +134,10 @@ class OwnerDashboard extends React.Component {
           <Bounce className="bouncy" animating={this.state.isBouncing} />
           <ParkPop handleAddClick={this.handleAddButtonClick} />
         </div>
-       <OwnerDashboardParkList parks={this.state.parks} handleDelete ={this.handleDeleteClick} />
+        <OwnerDashboardParkList
+          parks={this.state.parks}
+          handleDelete={this.handleDeleteClick}
+        />
       </div>
     );
   }

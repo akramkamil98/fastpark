@@ -16,7 +16,6 @@ app.use(bodyParser.json());
 app.post("/signup", function(req, res) {
   db.saveUser(req.body, function(user, err) {
     if (err) console.log("erreeer", err);
-    console.log("user", user);
     if (user) {
       res.send(user._id);
     }
@@ -25,11 +24,8 @@ app.post("/signup", function(req, res) {
 
 // handle login post request from client
 app.post("/login", function(req, res) {
-  console.log("AZZZZZZZZZZZZZZZHHHHHHHHHHHAAAAAAAAR")
   db.checkPassword(req.body, function(passRes, err) {
     if (err) console.log("erreeer", err);
-    console.log(passRes,"passRespassRespassRespassRespassRespassRes");
-    
     res.send(passRes);
   });
 });
@@ -61,16 +57,11 @@ app.post("/ownersignup", function(req, res) {
 //handle owner Creation from /logIn post request
 app.post("/ownerlogin", function(req, res) {
   db.checkPasswordOwner(req.body, function(passRes, err) {
-    if(err) console.log("erreeer",err)
-    console.log(passRes,"passRespassRespassRespassRespassRespassRes");
-    
+    if (err) console.log("erreeer", err);
 
     res.send(passRes);
   });
-  //res.send("hhhhhhhhhhhhhh")
 });
-
-
 
 //handle adding new park listing by owners from /addpark post request
 app.post("/addpark", function(req, res) {
@@ -82,11 +73,11 @@ app.post("/addpark", function(req, res) {
     res.send("done");
   });
 });
-app.delete("/deletepark",function(req,res){
-  db.deletePark(req.body.parkId,function(done){
+app.delete("/deletepark", function(req, res) {
+  db.deletePark(req.body.parkId, function(done) {
     res.send(done);
-  })
-})
+  });
+});
 app.post("/updatepark", (req, res) => {
   db.updatePark(req.body.parkId, req.body.userId, (done, err) => {
     if (err) console.log("updateError", err);
@@ -100,7 +91,7 @@ app.post("/updateownerrating", (req, res) => {
     if (err) console.log("updateError", err);
     res.send(done);
   });
- });
+});
 
 // All remaining requests return the React app, so it can handle routing.
 app.get("*", function(request, response) {
@@ -112,5 +103,3 @@ app.listen(PORT, function() {
     `Node cluster worker ${process.pid}: listening on port ${PORT}`
   );
 });
-
-

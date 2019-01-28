@@ -1,18 +1,7 @@
 import React from "react";
-import '../index.css';
+import "../index.css";
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  Form,
-  CardTitle,
-  CardSubtitle,
-  Button
-} from "reactstrap";
-import { Link } from 'react-router-dom';
-
+import { CardText, CardTitle, Button } from "reactstrap";
 
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
@@ -74,19 +63,34 @@ class GoogleMapsContainer extends React.Component {
           );
         })}
 
-        <InfoWindow 
+        <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.onMapClick}
         >
-         <img className="mapInf"  width="150px" height="100px" src={this.state.selectedPlace.image}></img>
-         <CardTitle className="mapInf">{this.state.selectedPlace.location}</CardTitle>
-         <CardText className="mapInf">{"Price: "}{this.state.selectedPlace.price}</CardText>
-        <CardText className="mapInf">{"from "}{this.state.selectedPlace.startTime}{" to "}{this.state.selectedPlace.endTime}</CardText>
-       
-        <Button className="buttonMap"  color="primary" >Book Now</Button>
-       
-       
+          <img
+            className="mapInf"
+            width="150px"
+            height="100px"
+            src={this.state.selectedPlace.image}
+          />
+          <CardTitle className="mapInf">
+            {this.state.selectedPlace.location}
+          </CardTitle>
+          <CardText className="mapInf">
+            {"Price: "}
+            {this.state.selectedPlace.price}
+          </CardText>
+          <CardText className="mapInf">
+            {"from "}
+            {this.state.selectedPlace.startTime}
+            {" to "}
+            {this.state.selectedPlace.endTime}
+          </CardText>
+
+          <Button className="buttonMap" color="primary">
+            Book Now
+          </Button>
         </InfoWindow>
       </Map>
     );

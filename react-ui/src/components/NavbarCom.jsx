@@ -21,14 +21,14 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import $ from "jquery"
+import $ from "jquery";
 // import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import SignUp from "./SignUp.jsx";
 import SignIn from "./SignIn.jsx";
 import HostCar from "./HostCar.jsx";
 import "../style/NavbarCom.css";
 import signUp from "./SignUp.jsx";
-import Book from "./book.js"
+import Book from "./book.js";
 // import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default class Example extends React.Component {
@@ -41,14 +41,12 @@ export default class Example extends React.Component {
     // this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
 
-
-    
     this.state = {
       isOpen: false,
       modal: false,
-       hideNav: window.localStorage.getItem('user')?true:false,
-       //window.localStorage.getItem('user')==null,
-       storage : window.localStorage.getItem('user')
+      hideNav: window.localStorage.getItem("user") ? true : false,
+      //window.localStorage.getItem('user')==null,
+      storage: window.localStorage.getItem("user")
     };
   }
   componentDidMount() {
@@ -58,17 +56,14 @@ export default class Example extends React.Component {
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen,
-      modal: !this.state.modal,
-      
+      modal: !this.state.modal
     });
   }
 
-  logout(){
-    console.log("hhhhhhhhhhhhhh");
+  logout() {
     this.setState({
-      storage: window.localStorage.removeItem('user'),
+      storage: window.localStorage.removeItem("user")
     });
-
   }
 
   render() {
@@ -97,21 +92,35 @@ export default class Example extends React.Component {
             </button>
 
             <Nav className="ml-auto" navbar>
-            <NavItem style={{'display':this.state.hideNav ? 'none': 'block'}}>
+              <NavItem
+                style={{ display: this.state.hideNav ? "none" : "block" }}
+              >
                 <HostCar />
               </NavItem>
-              <NavItem  style={{'display':this.state.hideNav ? 'none': 'block'}}>
-                <SignIn handleClick = {this.handleLoginClick}/>
+              <NavItem
+                style={{ display: this.state.hideNav ? "none" : "block" }}
+              >
+                <SignIn handleClick={this.handleLoginClick} />
               </NavItem>
-              <NavItem style={{'display': this.state.hideNav ? 'none':'block'}}>
+              <NavItem
+                style={{ display: this.state.hideNav ? "none" : "block" }}
+              >
                 <SignUp />
               </NavItem>
               <NavItem>
-              <NavLink style={{'display': this.state.hideNav === false ?  'none':'block'}} href={"/"} onClick={this.logout}>Log out{this.props.buttonLabel}</NavLink>
+                <NavLink
+                  style={{
+                    display: this.state.hideNav === false ? "none" : "block"
+                  }}
+                  href={"/"}
+                  onClick={this.logout}
+                >
+                  Log out{this.props.buttonLabel}
+                </NavLink>
               </NavItem>
-             <NavItem>
-               <NavLink href="/About">About</NavLink>
-             </NavItem>
+              <NavItem>
+                <NavLink href="/About">About</NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
